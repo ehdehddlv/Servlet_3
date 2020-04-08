@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>Point Mod Form</h1>
 </body>
 </html>
