@@ -1,6 +1,8 @@
 package com.iu.point;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,29 +35,54 @@ public class PointController extends HttpServlet {
 		//pathInfo (pointadd, list가 담겨있음)
 		String command = request.getPathInfo();
 		
-		//Method 형식
+		//Method(get이냐 post이냐) 형식
 		String method = request.getMethod();
 		
 		//Forward(true), redirect(false)로 보낼 방식 선택
 		boolean check = true;
 		
-		//path를 담을 변수
+		//URL(path)을 담을 변수
 		String path = "";
 		
 		if(command.equals("/pointList")) {
-			System.out.println("list");
+			//check = true;
+			path = "../WEB-INF/views/point/pointList.jsp";
+			//ojdbc6.jar 를 이용하여 oracle(DB)과 연동 
+			
 		} else if(command.equals("/pointAdd")) {
-			System.out.println("add");
+			if(method.equals("POST")) {
+				
+			}else {
+				//check = true;
+				path = "../WEB-INF/views/point/pointAdd.jsp";
+			}
+			
 		} else if(command.equals("/pointMod")) {
-			System.out.println("mod");
+			if(method.equals("POST")) {
+				
+			}else {
+				//check = true;
+				path = "../WEB-INF/views/point/pointMod.jsp";
+			}
+			
 		} else if(command.equals("/pointSelect")) {
-			System.out.println("select");
+			//check = true;
+			path = "../WEB-INF/views/point/pointSelect.jsp";
+			
 		} else if(command.equals("/pointDelete")) {
 			System.out.println("delete");
 		} else {
 			System.out.println("ETC");
 		}
 		
+		//
+		if(check) {
+			RequestDispatcher view = request.getRequestDispatcher(path);
+			view.forward(request, response);
+			
+		} else {
+			response.sendRedirect(path);
+		}
 		
 		
 	}//end doget
