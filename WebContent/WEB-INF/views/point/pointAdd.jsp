@@ -40,10 +40,40 @@
     <h1>Bootstrap Tutorial</h1>      
     <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
   </div>
-  <p>This is some text.</p>      
-  <p>This is another text.</p>      
+
 </div>
 
-	<h1>Point Add Form</h1>
+	<div class="container">
+		<div class="row">
+			<h1>Point Add Form</h1>
+			<table class="table table-hover">
+				<tr class="danger">
+					<td>번호</td>
+					<td>이름</td>
+					<td>국어</td>
+					<td>영어</td>
+					<td>수학</td>
+					<td>총점</td>
+					<td>평균</td>
+				</tr>
+								
+				<tr class="info">
+					<td>${add.num}</td>
+					<td>${add.name}</td>
+					<td>${add.kor}</td>
+					<td>${add.eng}</td>
+					<td>${add.math}</td>
+					<td>${add.total}</td>
+					<td>${add.avg}</td>
+				</tr>
+			
+			</table>
+			
+			
+			
+		</div>
+	</div>
+	
+	
 </body>
 </html>

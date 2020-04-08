@@ -62,6 +62,23 @@ public class PointController extends HttpServlet {
 			
 		} else if(command.equals("/pointAdd")) {
 			if(method.equals("POST")) {
+				PointDTO pointDTO = new PointDTO();
+				
+				pointDTO.setName(request.getParameter("name"));
+				int num = Integer.parseInt(request.getParameter("num"));
+				int kor = Integer.parseInt(request.getParameter("kor"));
+				int eng = Integer.parseInt(request.getParameter("eng"));
+				int math = Integer.parseInt(request.getParameter("math"));
+				pointDTO.setNum(num);
+				pointDTO.setKor(kor);
+				pointDTO.setEng(eng);
+				pointDTO.setMath(math);
+				
+				int result = pointService.pointAdd(pointDTO);
+				
+				request.setAttribute("add", result);
+				
+				path = "./pointAdd";
 				
 			}else {
 				//check = true;
@@ -91,11 +108,15 @@ public class PointController extends HttpServlet {
 			int num = Integer.parseInt(request.getParameter("num"));
 			int result = pointService.pointDelete(num);
 			check = false;
-			path="./pointList";
+			path = "./pointList";
 			
-			System.out.println("delete");
+			
 		} else {
 			System.out.println("ETC");
+		}
+		
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		//
@@ -107,9 +128,7 @@ public class PointController extends HttpServlet {
 			response.sendRedirect(path);
 		}
 		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		
 		
 	}//end doget

@@ -62,11 +62,11 @@
 						<td><a href="./pointSelect?num=${dto.num}">${dto.name}</a></td>
 						<td>${dto.avg}</td>
 					</tr>
-				</c:forEach>
+				</c:forEach> 
 			
-			</table>
+			</table> 
 			
-			<a href="./pointAdd" class="btn btn-primary">Point Add</a>
+			<a href="./pointAdd?name=${add.name},num=${add.num}" class="btn btn-primary">Point Add</a>
 			
 		</div>
 	</div>
