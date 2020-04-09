@@ -58,7 +58,7 @@
 				</tr>
 								
 				<tr class="info">
-					<td>${add.num}</td>
+					<td><input type="text" value="">${add.num}</td>
 					<td>${add.name}</td>
 					<td>${add.kor}</td>
 					<td>${add.eng}</td>
