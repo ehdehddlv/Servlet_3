@@ -66,7 +66,7 @@
 			
 			</table> 
 			
-			<a href="./pointAdd?name=${add.name},num=${add.num}" class="btn btn-primary">Point Add</a>
+			<a href="./pointAdd" class="btn btn-primary">Point Add</a>
 			
 		</div>
 	</div>

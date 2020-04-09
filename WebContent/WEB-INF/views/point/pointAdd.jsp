@@ -44,35 +44,39 @@
 </div>
 
 	<div class="container">
-		<div class="row">
-			<h1>Point Add Form</h1>
-			<table class="table table-hover">
-				<tr class="danger">
-					<td>번호</td>
-					<td>이름</td>
-					<td>국어</td>
-					<td>영어</td>
-					<td>수학</td>
-					<td>총점</td>
-					<td>평균</td>
-				</tr>
-								
-				<tr class="info">
-					<td><input type="text" value="">${add.num}</td>
-					<td>${add.name}</td>
-					<td>${add.kor}</td>
-					<td>${add.eng}</td>
-					<td>${add.math}</td>
-					<td>${add.total}</td>
-					<td>${add.avg}</td>
-				</tr>
-			
-			</table>
-			
-			
-			
-		</div>
+	<div class="row">
+	<form action="./pointAdd" method="post">
+	    <div class="form-group">
+	      <label for="Name">Name:</label>
+	      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+	    </div>
+	
+	    <div class="form-group">
+	      <label for="Num">Num:</label>
+	      <input type="text" class="form-control" id="num" placeholder="Enter Num" name="num">
+	    </div> 
+	       
+	    <div class="form-group">
+	      <label for="Kor">Kor:</label>
+	      <input type="text" class="form-control" id="kor" placeholder="Enter Kor" name="kor">
+	    </div>  
+	    
+	    <div class="form-group">
+	      <label for="Num">Eng:</label>
+	      <input type="text" class="form-control" id="eng" placeholder="Enter Eng" name="eng">
+	    </div>  
+	    
+	    <div class="form-group">
+	      <label for="Math">Math:</label>
+	      <input type="text" class="form-control" id="math" placeholder="Enter Math" name="math">
+	    </div>          
+	   
+	    <input type="button" class="btn btn-default" value="Submit">
+	    <button type="submit" class="btn btn-default">Submit</button>
+	    
+  </form>
 	</div>
+</div>
 	
 	
 </body>
