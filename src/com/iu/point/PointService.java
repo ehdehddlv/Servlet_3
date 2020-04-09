@@ -38,9 +38,7 @@ public class PointService {
 	public int pointMod(PointDTO pointDTO) throws Exception{
 		pointDTO.setTotal(pointDTO.getKor()+pointDTO.getEng()+pointDTO.getMath());
 		pointDTO.setAvg(pointDTO.getTotal()/3.0);
-		int result = pointDAO.pointMod(pointDTO);
-		
-		return result;
+		return pointDAO.pointUpdate(pointDTO);
 	}
 	
 	

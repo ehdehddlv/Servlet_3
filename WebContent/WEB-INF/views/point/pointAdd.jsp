@@ -70,9 +70,8 @@
 	      <label for="Math">Math:</label>
 	      <input type="text" class="form-control" id="math" placeholder="Enter Math" name="math">
 	    </div>          
-	   
-	    <input type="button" class="btn btn-default" value="Submit">
-	    <button type="submit" class="btn btn-default">Submit</button>
+	 
+	    <button type="submit" class="btn btn-default">Add</button>
 	    
   </form>
 	</div>

@@ -109,7 +109,7 @@ public class PointDAO {
 	}
 	
 	//4. Update
-	public int pointMod(PointDTO pointDTO) throws Exception{
+	public int pointUpdate(PointDTO pointDTO) throws Exception{
 		int result = 0;
 		Connection con = DBConnect.getConnect();
 		
