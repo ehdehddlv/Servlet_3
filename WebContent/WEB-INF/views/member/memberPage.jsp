@@ -1,51 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- BootStrap API -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- BootStrap API -->
+
+<c:import url="../template/boot.jsp"></c:import>
+
 </head>
 <body>
 
-	<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="${pageContext.request.contextPath}">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
-        </ul>
-      </li>
-      <li><a href="${pageContext.request.contextPath}/point/pointList">Point</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="${pageContext.request.contextPath}/member/memberJoin"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
+	<c:import url="../template/header.jsp"></c:import>
 
+	<div class="container">
+		<div class="row">
+			
+			<table class="table table-hover">
+				<tr class="danger">
+					<td>ID</td>
+					<td>Name</td>
+					<td>Age</td>
+					<td>Phone</td>
+					<td>Email</td>
+				</tr>
+								
+				<tr class="info">
+					<td>${sessionScope.member.id}</td>
+					<td>${member.name}</td>
+					<td>${member.age}</td>
+					<td>${member.phone}</td>
+					<td>${member.email}</td>
+				</tr>
+			</table>
+			
+			<button class="btn btn-primary" id="upd">Update</button>
+			<button class="btn btn-danger" id="del">Delete</button>
+			
+		</div>
+	</div>
 
-<div class="container">
-  <div class="jumbotron">
-    <h1>Bootstrap Tutorial</h1>      
-    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
-  </div>
-	<h1>My Page Form</h1>
-</div>
+	<script type="text/javascript">
+		//js document.getElementById
+		//js document.querySelector
+		//jquery $(선택자)
+	
+		$("#upd").on("click", function() { 
+			location.href="./memberUpdate?id=${member.id}";
+		});
+		
+		$("#del").click(function() {
+			var result = confirm("정말 탈퇴 하시겠습니까?");
+			if(result){
+				alert("회원정보가 삭제되었습니다.");
+				location.href="./memberDelete";
+				//location.href="./memberDelete?id=${member.id}";
+			}
+		});
+		
+		
+		
+	
+	</script>
 
-
+	
 
 	
 </body>

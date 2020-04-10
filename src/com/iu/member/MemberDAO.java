@@ -89,6 +89,60 @@ public class MemberDAO {
 		return memberDTO;
 		
 	}
+	
+	//4. MemberDelete(파라미터)
+//	public int memberDelete(String id) throws Exception{
+//		int result = 0;
+//		Connection con = DBConnect.getConnect();
+//		
+//		String sql = "delete member where id=?";
+//		
+//		PreparedStatement st = con.prepareStatement(sql);
+//		
+//		st.setString(1, id);
+//		
+//		result = st.executeUpdate();
+//		
+//		st.close();
+//		con.close();
+//		
+//		return result;
+//	}
+	
+	//4.1 MemberDelete(세션)
+	public int memberDelete(MemberDTO memberDTO) throws Exception{
+		Connection con = DBConnect.getConnect();
+		String sql = "delete member where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, memberDTO.getId());
+		int result = st.executeUpdate();
+		st.close();
+		con.close();
+		return result;
+	}
+	
+	//5. MemberUpdate
+	public int memberUpdate(MemberDTO memberDTO) throws Exception{
+		int result = 0;
+		Connection con = DBConnect.getConnect();
+		
+		String sql = "update member set name=?, age=?, phone=?, email=? where id=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, memberDTO.getName());
+		st.setInt(2, memberDTO.getAge());
+		st.setString(3, memberDTO.getPhone());
+		st.setString(4, memberDTO.getEmail());
+		st.setString(5, memberDTO.getId());
+		
+		result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		return result;
+	}
 		
 		
 		

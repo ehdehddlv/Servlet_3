@@ -35,12 +35,13 @@ public class MemberController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
+		//join, login etc..
 		String command = request.getPathInfo();
-		
+		//get, post
 		String method = request.getMethod();
-		
+		//forward, redirect
 		boolean check = true;
-		
+		//URL주소 담을 변수
 		String path = "";
 		
 		try {
@@ -97,12 +98,62 @@ public class MemberController extends HttpServlet {
 			check = false;
 			path = "../";
 		}else if(command.equals("/memberPage")) {
-			HttpSession session = request.getSession();
+			//HttpSession session = request.getSession();
+			
 			
 			path = "../WEB-INF/views/member/memberPage.jsp";
 			
-		}
+		}else if(command.equals("/memberDelete")) {
 		
+			//파라미터로 id 꺼내서 지우는 방법
+			//String id = request.getParameter("id");
+			//int result = memberService.memberDelete(id);
+			
+			HttpSession session = request.getSession();
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+			int result = memberService.memberDelete(memberDTO);
+			
+			if(result > 0) {
+				session.invalidate();
+			}
+			
+			check = false;
+			path = "../";
+			
+		}else if(command.equals("/memberUpdate")){
+			if(method.equals("POST")) {
+				MemberDTO memberDTO = new MemberDTO();
+				
+				memberDTO.setName(request.getParameter("name"));
+				memberDTO.setAge(Integer.parseInt(request.getParameter("age")));
+				memberDTO.setPhone(request.getParameter("phone"));
+				memberDTO.setEmail(request.getParameter("email"));
+				memberDTO.setId(request.getParameter("id"));
+				
+				int result = memberService.memberUpdate(memberDTO);
+				
+				HttpSession session = request.getSession();
+				
+				String msg = "회원정보 수정 실패";
+				if(result > 0) {
+					msg = "회원정보 수정 성공";
+					request.setAttribute("path", "../");
+					session.setAttribute("member", memberDTO);
+				}else {
+					request.setAttribute("path", "./memberPage");
+				}
+				
+				request.setAttribute("result", msg);
+				
+				path = "../WEB-INF/views/common/result.jsp";
+				
+			}else {
+				//String id = request.getParameter("id");
+				//MemberDTO memberDTO = memberService.memberPage(id);
+				path = "../WEB-INF/views/member/memberUpdate.jsp";
+			}
+	
+		}
 		
 		
 		} catch (Exception e) {
