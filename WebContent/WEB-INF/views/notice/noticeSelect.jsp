@@ -16,10 +16,18 @@
 
 	
 
-	<h1>notice select</h1>
 	
-	<button class="btn btn-primary" id="upd">Update</button>
-	<button class="btn btn-danger" id="del">Delete</button>
+	<div class="container">
+		<div class="row">
+			<h1>notice select</h1>
+			
+			<button class="btn btn-primary" id="upd">Update</button>
+			<button class="btn btn-danger" id="del">Delete</button>
+		</div>
+	</div>	
+	
+	
+	
 	
 	<script type="text/javascript">
 		$("#upd").click(function() {

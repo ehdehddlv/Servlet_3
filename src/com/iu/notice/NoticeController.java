@@ -119,7 +119,7 @@ public class NoticeController extends HttpServlet {
 			path = "../WEB-INF/views/notice/noticeMod.jsp";
 		}
 		
-		
+			
 		
 		
 		else {
